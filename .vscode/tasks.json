@@ -1,0 +1,62 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build frontend",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"--prefix",
+				"sarvam\\frontend",
+				"run",
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Start LegacyOS FastAPI backend",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"-m",
+				"uvicorn",
+				"app.main:app",
+				"--reload",
+				"--port",
+				"8000",
+				"--app-dir",
+				"sarvam/backend"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Run Sarvam app",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"sarvam\\run_all.py"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Sarvam frontend (webpack)",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"--prefix",
+				"sarvam\\frontend",
+				"run",
+				"dev",
+				"--",
+				"--webpack"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}
